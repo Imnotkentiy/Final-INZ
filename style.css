@@ -8,14 +8,21 @@ header{
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    margin: 0 50px;
+    padding: 0 50px;
+    background-color: chocolate;
+    color: white;
 }
 .logo{
     height: 100%;
 }
-#query{
-    height: 40%;
+#search{
     font-size: larger;
+    height: 40%;
+    display: flex;
+    align-items: center;
+}
+#query{
+    margin-left: 5px;
     padding-left: 5px;
 }
 img{
@@ -29,18 +36,92 @@ main{
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(3, 1fr);
+    margin: 30px 0;
 }
 .product{
     min-width: 400px;
     max-width: 500px;
     height: 500px;
+    background-color: pink;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#product{
+    width: 100%;
+    margin-top: 50px;
+    padding: 30px 50px;
+    background-color: pink;
+    display: flex;
+    font-size: large;
+    flex-direction: column;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.product > h4{
+    align-self: center;
 }
 .product-img{
     height: 300px;
+    width: 100%;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: auto 300px;
 }
+.product-img{
+    height: 300px;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto 300px;
+}
+.full-img{
+    height: 500px;
+    background-size: auto 500px;
+}
+.buttons{
+    width: 100%;
+    display: flex;
+    height: 50px;
+    padding: 10px 30px;
+    justify-content: space-between;
+}
+.buttons > button{
+    padding: 5px 5px;
+    background-color: chocolate;
+    color: white
+}
 footer{
     height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    background-color: chocolate;
+    color: white;
+}
+
+#popup{
+    top: -100dvh;
+    position: fixed;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: top .2s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#popup-info{
+    padding: 50px 30px;
+    width: 500px;
+    background-color: gainsboro;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -1,25 +1,33 @@
 const container = document.getElementById("products")
 const query = document.getElementById("query");
 
-const renderProducts = (data) => {
-    let products = ""
-    data.forEach(element => {
-        products += 
-        `<div class="product">
-            <div class="product-img" style="background-image: url('images/products/${element.img}');"></div>
-            <p class="product-name">${element.name}</p>
-        </div>`
+const renderProducts = (products) => {
+    let innerHTML = ""
+    products.forEach(product => {
+        innerHTML += `
+        <div class="product">
+            <div class="info">
+                <div class="product-img" style="background-image: url('images/products/${product.img}');"></div>
+                <h4 class="product-name">${product.name}</h4>
+                <p>${product.desc}</p>
+            </div>
+            <div class="buttons">
+                <span>${product.price}$</span>
+                <button onclick="window.location = 'product.html?id=${product.id}'">See more</button>
+            </div>
+        </div>
+        `
     })
-    container.innerHTML = products
+    container.innerHTML = innerHTML
     resizeGrid()
 }
-const filterData = (data) => {
-    return data.filter(product => product.name.toLowerCase().includes(query.value.toLowerCase()))
+const filterProducts = (products) => {
+    return products.filter(product => product.name.toLowerCase().includes(query.value.toLowerCase()))
 }
 const rerender = () => {
     fetch("products.json")
         .then(response => response.json())
-        .then(data => renderProducts(filterData(data)))
+        .then(data => renderProducts(filterProducts(data)))
 }
 rerender()
 
@@ -31,6 +39,8 @@ const resizeGrid = () => {
     const childWidth = +getComputedStyle(container.children[0]).minWidth.slice(0, -2);
     const perChild = childWidth + gap;
     const columns = Math.floor(container.getBoundingClientRect().width / perChild);
+    console.log(columns, container.childElementCount);
+    console.log(container)
     container.style.gridTemplateColumns = `repeat(${Math.min(columns, container.childElementCount)}, 1fr)`
 }
 window.addEventListener('resize', (e) => resizeGrid())
